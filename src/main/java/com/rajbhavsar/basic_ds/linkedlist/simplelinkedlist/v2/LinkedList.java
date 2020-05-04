@@ -5,10 +5,13 @@ public class LinkedList
 	private Node head;
 	private Node lastNode;
 
-	public Node getFirst(){
+	public Node getFirst()
+	{
 		return head;
 	}
-	public Node getLast(){
+
+	public Node getLast()
+	{
 		return lastNode;
 	}
 
@@ -23,13 +26,15 @@ public class LinkedList
 		System.out.println(currentNode.getData());
 	}
 
-	public void addElement(int data){
-		Node newNode = new Node(data,null);
-		if (head == null){
+	public void addElement(int data)
+	{
+		Node newNode = new Node(data, null);
+		if (head == null)
+		{
 			head = newNode;
 			lastNode = newNode;
-		}
-		else {
+		} else
+		{
 			lastNode.setNextNode(newNode);
 			lastNode = lastNode.getNextNode();
 		}
@@ -64,6 +69,62 @@ public class LinkedList
 			}
 		}
 	}
+
+	public Node deleteLastElement()
+	{
+		Node currentNode = head;
+		Node temp;
+		if (!currentNode.hasNext())
+		{
+			temp = head;
+			head = null;
+			lastNode = null;
+			return temp;
+		} else
+		{
+			while (currentNode.getNextNode() != lastNode)
+			{
+				currentNode = currentNode.getNextNode();
+			}
+			currentNode.setNextNode(null);
+			temp = lastNode;
+			lastNode = currentNode;
+			return temp;
+		}
+	}
+
+	public Node deleteElementAtIndex(int index)
+	{
+		Node currentNode = head;
+		Node temp;
+		if (index == 0)
+		{
+			temp = head;
+			head = head.getNextNode();
+			temp.setNextNode(null);
+			return temp;
+		} else if (index == this.size() - 1 || index >= this.size())
+		{
+			return this.deleteLastElement();
+		} else
+		{
+			int count = 0;
+			while (currentNode.hasNext())
+			{
+				count++;
+				if (count == index)
+				{
+					temp = currentNode.getNextNode();
+					currentNode.setNextNode(temp.getNextNode());
+					temp.setNextNode(null);
+					return temp;
+				}
+				currentNode = currentNode.getNextNode();
+			}
+		}
+		return null;
+	}
+
 
 	public int size()
 	{

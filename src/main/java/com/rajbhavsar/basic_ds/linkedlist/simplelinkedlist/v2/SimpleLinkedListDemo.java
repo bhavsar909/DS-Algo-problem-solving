@@ -4,7 +4,7 @@ public class SimpleLinkedListDemo
 {
 	public static void main(String[] args)
 	{
-		LinkedList linkedList =  new LinkedList();
+		LinkedList linkedList = new LinkedList();
 		linkedList.addElement(1);
 		linkedList.addElement(2);
 		linkedList.addElement(3);
@@ -12,10 +12,16 @@ public class SimpleLinkedListDemo
 		System.out.println(linkedList.size());
 		linkedList.printAllElements();
 
-		linkedList.addElementAtIndex(5,2);
+		linkedList.addElementAtIndex(5, 2);
 		linkedList.printAllElements();
 
-		System.out.println("First element: "+ linkedList.getFirst());
-		System.out.println("Last element: "+ linkedList.getLast());
+		System.out.println("First element: " + linkedList.getFirst());
+		System.out.println("Last element: " + linkedList.getLast());
+
+		System.out.println("Deleted element :" +linkedList.deleteLastElement());
+		linkedList.printAllElements();
+
+		System.out.println("Deleted element at index: "+linkedList.deleteElementAtIndex(2));
+		linkedList.printAllElements();
 	}
 }
