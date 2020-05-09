@@ -138,4 +138,20 @@ public class LinkedList
 		//+1 for 0th node because we have started with this means current object with 0.
 		return count + 1;
 	}
+
+	public void reverseLinkedList(){
+		Node t1= head;
+		Node t2= head.getNextNode();
+		Node x;
+		t1.setNextNode(null);
+		while (t2.hasNext()){
+			x= t2.getNextNode();
+			t2.setNextNode(t1);
+			t1=t2;
+			t2=x;
+		}
+		t2.setNextNode(t1);
+		lastNode=head;
+		head=t2;
+	}
 }
